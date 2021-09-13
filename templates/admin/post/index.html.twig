@@ -1,0 +1,54 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <div class="container border-2">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h1 class="display-4 text-center mt-5">
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+
+        <div class="row no-gutters">
+            {% if check_category is not empty %}
+            <div class="col-12 mt-5">
+                <div class="btn btn-success ">
+                    <a href="{{ path('admin_post_create') }}">создать пост</a><br>
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="row no-gutters">
+            <div class="col-12">
+                {% if check_category is empty %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <p>
+                            Создание постов невозможно, сначало создай категорию
+                        </p>
+                        <hr>
+                        <a href="{{ path('admin_category_create') }}">Создать категорию</a>
+                    </div>
+                {% else %}
+
+                <h2>Список постов</h2>
+                    {% for post_item in post %}
+                    <div class="list-group mx-0">
+                        <label class="list-group-item d-flex gap-2">
+                            <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+                            <span><font style="vertical-align: inherit;">{{post_item.title}}</font></span>
+                        </label>
+                    </div>
+                    {% endfor %}
+
+
+                        {# <a href="{{ path('admin_post_update', {'id': post_item.id }) }}" class="btn-link">Редактировать</a>#}
+
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
