@@ -27,7 +27,8 @@ class UserType extends AbstractType
                     )
                 )
             )
-            ->add('save', SubmitType::class, array(
+
+             ->add('save', SubmitType::class, array(
                 'label' => 'Зарегестрироваться'
             ));
     }

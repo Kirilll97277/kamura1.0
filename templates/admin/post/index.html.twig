@@ -8,18 +8,6 @@
                 </h1>
             </div>
         </div>
-
-        <div class="row no-gutters">
-            {% if check_category is not empty %}
-            <div class="col-12 mt-5">
-                <div class="btn btn-success ">
-                    <a href="{{ path('admin_post_create') }}">создать пост</a><br>
-                </div>
-
-            </div>
-            {% endif %}
-        </div>
-
         <div class="row no-gutters">
             <div class="col-12">
                 {% if check_category is empty %}
@@ -38,16 +26,22 @@
                         <label class="list-group-item d-flex gap-2">
                             <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
                             <span><font style="vertical-align: inherit;">{{post_item.title}}</font></span>
+                            <a href="{{ path('admin_post_update', {'id': post_item.id }) }}" class="btn-link">Редактировать</a>
                         </label>
                     </div>
                     {% endfor %}
-
-
-                        {# <a href="{{ path('admin_post_update', {'id': post_item.id }) }}" class="btn-link">Редактировать</a>#}
-
-
                 {% endif %}
             </div>
+        </div>
+        <div class="row no-gutters">
+            {% if check_category is not empty %}
+                <div class="col-12 mt-2">
+                    <div class="btn btn-success ">
+                        <a href="{{ path('admin_post_create') }}">создать пост</a><br>
+                    </div>
+
+                </div>
+            {% endif %}
         </div>
     </div>
 
